@@ -1,0 +1,9 @@
+# ignore google test sources
+googletest/
+
+# ignore visual studio and visual studio code files
+.vs/
+.vscode/
+
+#ignore build directory
+build/
