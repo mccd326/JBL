@@ -1,0 +1,60 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build_linux:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: pull googleTest
+      run: git clone https://github.com/google/googletest.git ${{github.workspace}}/dlljbltest/googletest
+    - name: configure
+      run: cmake -S ${{github.workspace}} ${{github.workspace}}/build
+    - name: build
+      run: cmake --build ${{github.workspace}}/build
+      
+  build_windows:
+
+    runs-on: windows
+    steps:
+    - uses: actions/checkout@v4
+    - name: pull googleTest
+      run: git clone https://github.com/google/googletest.git ${{github.workspace}}/dlljbltest/googletest
+    - name: configure
+      run: cmake -S ${{github.workspace}} ${{github.workspace}}/build
+    - name: build
+      run: cmake --build ${{github.workspace}}/build
+    - name: Create Artifact directory
+      run: mkdir artifacts
+      working-directory: ${{github.workspace}}
+    # - name: zip test output
+    #   run: $files = @{Path = "${{github.workspace}}/build/dlljbltest/Debug/*"
+    #     CompressionLevel = "Fastest"
+    #     DestinationPath = "${{github.workspace}}/artifacts/dlljbltest_debug.zip"}
+    #     Compress-Archive @files
+    # - name: zip main library
+    #   run: $files = @{ Path = "${{github.workspace}}/build/dlljbl/Debug/*"
+    #     CompressionLevel = "Fastest"
+    #     DestinationPath = "${{github.workspace}}/artifacts/dlljbl_debug.zip"}
+    #     Compress-Archive @files
+    - name: Upload Test Files
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        name: dlljbl_debug
+        path: ${{github.workspace}}/build/dlljbl/Debug/*
+    - name: Upload library Files
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        name: dlljbltest_debug
+        path: ${{github.workspace}}/build/dlljbltest/Debug/*
+    - name: cleanup
+      run: Remove-Item -Recurse -Force *;
+      working-directory: ${{github.workspace}}
+      continue-on-error: true

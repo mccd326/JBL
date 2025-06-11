@@ -10,6 +10,7 @@ set(SOURCES src/main.cpp)
 
 include(GoogleTest)
 add_subdirectory(googletest)
+
 include_directories(${CMAKE_SOURCE_DIR}/dlljbl/src)
 set(DLLJBL_BINARY_DIR ${CMAKE_BINARY_DIR}/dlljbl_build)
 
