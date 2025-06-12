@@ -18,44 +18,51 @@ jobs:
             type: Debug
             toolchain: "cmake/toolchains/win2k.cmake"
             generator: "MinGW Makefiles"
+
           - name: win2k-x86-Release
             arch: x86
             type: Release
             toolchain: "cmake/toolchains/win2k.cmake"
             generator: "MinGW Makefiles"
+
           - name: winxp-x86-Debug
             arch: x86
             type: Debug
             toolchain: "cmake/toolchains/winxp.cmake"
             generator: "MinGW Makefiles"
+
           - name: winxp-x86-Release
             arch: x86
             type: Release
             toolchain: "cmake/toolchains/winxp.cmake"
             generator: "MinGW Makefiles"
-          - name: modern-x86-Debug
+
+          - name: winx86-Debug
             arch: x86
             type: Debug
             tests: true
-            toolchain: "cmake/toolchains/win7_8_10_11.cmake"
+            toolchain: "cmake/toolchains/win.cmake"
             generator: "Visual Studio 17 2022"
-          - name: modern-x86-Release
+
+          - name: winx86-Release
             arch: x86
             type: Release
             tests: true
-            toolchain: "cmake/toolchains/win7_8_10_11.cmake"
+            toolchain: "cmake/toolchains/win.cmake"
             generator: "Visual Studio 17 2022"
-          - name: modern-x64-Debug
+
+          - name: winx64-Debug
             arch: x64
             type: Debug
             tests: true
-            toolchain: "cmake/toolchains/win7_8_10_11.cmake"
+            toolchain: "cmake/toolchains/win.cmake"
             generator: "Visual Studio 17 2022"
-          - name: modern-x64-Release
+
+          - name: winx64-Release
             arch: x64
             type: Release
             tests: true
-            toolchain: "cmake/toolchains/win7_8_10_11.cmake"
+            toolchain: "cmake/toolchains/win.cmake"
             generator: "Visual Studio 17 2022"
 
 
@@ -76,15 +83,22 @@ jobs:
       if: matrix.config.tests
       uses: actions/upload-artifact@v4.6.2
       with:
-        name: dlljbl_Debug
-        path: ${{github.workspace}}/build/x64/dlljbltest/${{matrix.config.type}}/*
+        name: dlljbltest_${{matrix.config.name}}
+        path: |
+          ${{github.workspace}}/build/x64/dlljbltest/${{matrix.config.type}}/*
 
     - name: Upload library Files ${{matrix.config.name}}
       uses: actions/upload-artifact@v4.6.2
       with:
-        name: dlljbltest_Debug
-        path: build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*
+        name: dlljbl_${{matrix.config.name}}
+        path: |
+          build-${{matrix.config.name}}/dlljbl/*.a
+          build-${{matrix.config.name}}/dlljbl/*.lib
+          build-${{matrix.config.name}}/dlljbl/*.pdb
+          build-${{matrix.config.name}}/dlljbl/*.exe
+          
     - name: cleanup
-      run: Remove-Item -Recurse -Force *;
+      run: Get-ChildItem -Recurse;
+        Remove-Item -Recurse -Force *;
       working-directory: ${{github.workspace}}
       continue-on-error: true
