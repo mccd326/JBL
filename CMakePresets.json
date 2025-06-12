@@ -1,0 +1,65 @@
+{
+    "version": 3,
+    "configurePresets": [
+                {
+            "name": "win-x86-Debug",
+            "displayName": "Windows x86-Debug",
+            
+            "toolchainFile": "cmake/toolchains/win.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "architecture": "win32"
+        },
+        {
+            "name": "win-x86-Release",
+            "displayName": "Windows x86-Release",
+            
+            "toolchainFile": "cmake/toolchains/win.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "architecture": "win32"
+
+        },
+        {
+            "name": "win-x64-Debug",
+            "displayName": "Windows x64-Debug",
+            
+            "toolchainFile": "cmake/toolchains/win.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "win-x64-Release",
+            "displayName": "Windows x64-Release",
+            
+            "toolchainFile": "cmake/toolchains/win.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+
+        },
+        {
+            "name": "winxp-x86-Debug",
+            "displayName": "Windows XP x86-Debug",
+            
+            "toolchainFile": "cmake/toolchains/winxp.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "generator": "MinGW Makefiles"
+        },
+        {
+            "name": "winxp-x86-Release",
+            "displayName": "Windows XP x86-Release",
+            
+            "toolchainFile": "cmake/toolchains/winxp.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "generator": "MinGW Makefiles"
+        }
+    ]
+}
