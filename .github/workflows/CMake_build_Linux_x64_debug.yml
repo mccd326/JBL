@@ -1,0 +1,19 @@
+name: CMake build Linux x64 Debug
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+jobs:
+  build_linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: pull googleTest
+      run: git clone https://github.com/google/googletest.git ${{github.workspace}}/dlljbltest/googletest
+    - name: configure
+      run: cmake -S ${{github.workspace}} ${{github.workspace}}/build
+    - name: build
+      run: cmake --build ${{github.workspace}}/build
+      
