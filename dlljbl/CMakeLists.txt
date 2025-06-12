@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 98)
 
 # Add source files
 set(SOURCES src/lib.cpp src/lib.h)
+
 add_library(JBLDLL ${SOURCES})
