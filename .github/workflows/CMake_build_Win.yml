@@ -85,7 +85,7 @@ jobs:
       with:
         name: dlljbltest_${{matrix.config.name}}
         path: |
-          ${{github.workspace}}/build/x64/dlljbltest/${{matrix.config.type}}/*
+          ${{github.workspace}}/build-${{matrix.config.name}}/x64/dlljbltest/${{matrix.config.type}}/*
 
     - name: Upload library Files ${{matrix.config.name}}
       uses: actions/upload-artifact@v4.6.2
@@ -96,7 +96,11 @@ jobs:
           build-${{matrix.config.name}}/dlljbl/*.lib
           build-${{matrix.config.name}}/dlljbl/*.pdb
           build-${{matrix.config.name}}/dlljbl/*.exe
-          
+          build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}*.exe
+          build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}*.lib
+          build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}*.pdb
+        if-no-files-found: error
+
     - name: cleanup
       run: Get-ChildItem -Recurse;
         Remove-Item -Recurse -Force *;
