@@ -57,7 +57,7 @@ jobs:
       run: git clone https://github.com/google/googletest.git ${{github.workspace}}/dlljbltest/googletest
 
     - name: Configure CMake
-      run: cmake -S . -B build-${{matrix.config.name}} -DCMAKE_TOOLCHAIN_FILE=${{matrix.config.toolchain}} -DCMAKE_BUILD_TYPE=${{matrix.config.type}}
+      run: cmake -S . -B build-${{matrix.config.name}} -DCMAKE_TOOLCHAIN_FILE="${{matrix.config.toolchain}}" -DCMAKE_BUILD_TYPE=${{matrix.config.type}}
 
     - name: Build Project
       run: cmake --build build-${{matrix.config.name}} --config ${{matrix.config.type}}
