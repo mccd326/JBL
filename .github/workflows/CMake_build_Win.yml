@@ -17,36 +17,44 @@ jobs:
             arch: x86
             type: Debug
             toolchain: "cmake/toolchains/win2k.cmake"
+            generator: "MinGW Makefiles"
           - name: win2k-x86-Release
             arch: x86
             type: Release
             toolchain: "cmake/toolchains/win2k.cmake"
+            generator: "MinGW Makefiles"
           - name: winxp-x86-Debug
             arch: x86
             type: Debug
             toolchain: "cmake/toolchains/winxp.cmake"
+            generator: "MinGW Makefiles"
           - name: winxp-x86-Release
             arch: x86
             type: Release
             toolchain: "cmake/toolchains/winxp.cmake"
+            generator: "MinGW Makefiles"
           - name: modern-x86-Debug
             arch: x86
             tests: true
-            toolchain: "cmake/toolchains/win7+.cmake"
+            toolchain: "cmake/toolchains/win7_8_10_11.cmake"
+            generator: "Visual Studio 17 2022"
           - name: modern-x86-Release
             arch: x86
             tests: true
-            toolchain: "cmake/toolchains/win7+.cmake"
+            toolchain: "cmake/toolchains/win7_8_10_11.cmake"
+            generator: "Visual Studio 17 2022"
           - name: modern-x64-Debug
             arch: x64
             type: Debug
             tests: true
-            toolchain: "cmake/toolchains/win7+.cmake"
+            toolchain: "cmake/toolchains/win7_8_10_11.cmake"
+            generator: "Visual Studio 17 2022"
           - name: modern-x64-Release
             arch: x64
             type: Release
             tests: true
-            toolchain: "cmake/toolchains/win7+.cmake"
+            toolchain: "cmake/toolchains/win7_8_10_11.cmake"
+            generator: "Visual Studio 17 2022"
 
 
     steps:
@@ -57,7 +65,7 @@ jobs:
       run: git clone https://github.com/google/googletest.git ${{github.workspace}}/dlljbltest/googletest
 
     - name: Configure CMake
-      run: cmake -S . -B build-${{matrix.config.name}} -DCMAKE_TOOLCHAIN_FILE="${{github.workspace}}/${{matrix.config.toolchain}}" -DCMAKE_BUILD_TYPE=${{matrix.config.type}}
+      run: cmake -S . -B build-${{matrix.config.name}} -DCMAKE_TOOLCHAIN_FILE="${{github.workspace}}/${{matrix.config.toolchain}}" -DCMAKE_BUILD_TYPE=${{matrix.config.type}} -G "${{matrix.config.generator}}"
 
     - name: Build Project
       run: cmake --build build-${{matrix.config.name}} --config ${{matrix.config.type}}
