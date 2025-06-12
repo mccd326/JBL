@@ -1,0 +1,80 @@
+name: CMake build Windows All
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build_windows:
+
+    runs-on: windows
+    strategy:
+      matrix:
+        config:
+          - name: win2k-x86-Debug
+            arch: x86
+            type: Debug
+            toolchain: cmake/toolchains/win2k.cmake
+          - name: win2k-x86-Release
+            arch: x86
+            type: Release
+            toolchain: cmake/toolchains/win2k.cmake
+          - name: winxp-x86-Debug
+            arch: x86
+            type: Debug
+            toolchain: cmake/toolchains/winxp.cmake
+          - name: winxp-x86-Release
+            arch: x86
+            type: Release
+            toolchain: cmake/toolchains/winxp.cmake
+          - name: modern-x86-Debug
+            arch: x86
+            tests: true
+            toolchain: cmake/toolchains/win7+.cmake
+          - name: modern-x86-Release
+            arch: x86
+            tests: true
+            toolchain: cmake/toolchains/win7+.cmake
+          - name: modern-x64-Debug
+            arch: x64
+            type: Debug
+            tests: true
+            toolchain: cmake/toolchains/win7+.cmake
+          - name: modern-x64-Release
+            arch: x64
+            type: Release
+            tests: true
+            toolchain: cmake/toolchains/win7+.cmake
+
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: pull googleTest
+      if: matrix.config.tests
+      run: git clone https://github.com/google/googletest.git ${{github.workspace}}/dlljbltest/googletest
+
+    - name: Configure CMake
+      run: cmake -S . -B build-${{matrix.config.name}} -DCMAKE_TOOLCHAIN_FILE=${{matrix.config.toolchain}} -DCMAKE_BUILD_TYPE=${{matrix.config.type}}
+
+    - name: Build Project
+      run: cmake --build build-${{matrix.config.name}} --config ${{matrix.config.type}}
+
+    - name: Upload Test Project
+      if: matrix.config.tests
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        name: dlljbl_Debug
+        path: ${{github.workspace}}/build/x64/dlljbltest/${{matrix.config.type}}/*
+
+    - name: Upload library Files ${{matrix.config.name}}
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        name: dlljbltest_Debug
+        path: build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*
+    - name: cleanup
+      run: Remove-Item -Recurse -Force *;
+      working-directory: ${{github.workspace}}
+      continue-on-error: true
