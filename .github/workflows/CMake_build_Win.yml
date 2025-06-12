@@ -16,37 +16,37 @@ jobs:
           - name: win2k-x86-Debug
             arch: x86
             type: Debug
-            toolchain: ${{github.workspace}}/cmake/toolchains/win2k.cmake
+            toolchain: "${{github.workspace}}/cmake/toolchains/win2k.cmake"
           - name: win2k-x86-Release
             arch: x86
             type: Release
-            toolchain: ${{github.workspace}}/cmake/toolchains/win2k.cmake
+            toolchain: "${{github.workspace}}/cmake/toolchains/win2k.cmake"
           - name: winxp-x86-Debug
             arch: x86
             type: Debug
-            toolchain: ${{github.workspace}}/cmake/toolchains/winxp.cmake
+            toolchain: "${{github.workspace}}/cmake/toolchains/winxp.cmake"
           - name: winxp-x86-Release
             arch: x86
             type: Release
-            toolchain: ${{github.workspace}}/cmake/toolchains/winxp.cmake
+            toolchain: "${{github.workspace}}/cmake/toolchains/winxp.cmake"
           - name: modern-x86-Debug
             arch: x86
             tests: true
-            toolchain: ${{github.workspace}}/cmake/toolchains/win7+.cmake
+            toolchain: "${{github.workspace}}/cmake/toolchains/win7+.cmake"
           - name: modern-x86-Release
             arch: x86
             tests: true
-            toolchain: ${{github.workspace}}/cmake/toolchains/win7+.cmake
+            toolchain: "${{github.workspace}}/cmake/toolchains/win7+.cmake"
           - name: modern-x64-Debug
             arch: x64
             type: Debug
             tests: true
-            toolchain: ${{github.workspace}}/cmake/toolchains/win7+.cmake
+            toolchain: "${{github.workspace}}/cmake/toolchains/win7+.cmake"
           - name: modern-x64-Release
             arch: x64
             type: Release
             tests: true
-            toolchain: ${{github.workspace}}/cmake/toolchains/win7+.cmake
+            toolchain: "${{github.workspace}}/cmake/toolchains/win7+.cmake"
 
 
     steps:
