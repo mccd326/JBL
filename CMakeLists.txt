@@ -6,7 +6,10 @@ set(CMAKE_CXX_STANDARD 98)
 
 # Add source files
 add_subdirectory(dlljbl)
-add_subdirectory(dlljbltest)
+if(CMAKE_SYSTEM_VERSION GREATER 5.1)
+    message("Configuring test project on modern platforms")
+    add_subdirectory(dlljbltest)
+endif()
 
 # Define installation rules
 #install(TARGETS MyLibrary DESTINATION lib)
