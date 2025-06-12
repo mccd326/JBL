@@ -86,6 +86,7 @@ jobs:
         name: dlljbltest_${{matrix.config.name}}
         path: |
           ${{github.workspace}}/build-${{matrix.config.name}}/x64/dlljbltest/${{matrix.config.type}}/*
+          ${{github.workspace}}/build-${{matrix.config.name}}/x64/dlljbltest/${{matrix.config.type}}/*
 
     - name: Upload library Files ${{matrix.config.name}}
       uses: actions/upload-artifact@v4.6.2
