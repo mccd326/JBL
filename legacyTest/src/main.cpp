@@ -14,5 +14,9 @@ int main(){
     }
     std::cout << "We are currently running on : " << architecture << std::endl;
 
+    std::cout << "Defined Windows Version " << _WIN32_WINNT << std::endl;
+
+    std::cout << "Custom Windows Version " << MYWINVER << std::endl;
+
     Startup();
 }

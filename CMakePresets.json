@@ -9,7 +9,8 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             },
-            "architecture": "win32"
+            "architecture": "win32",
+            "binaryDir": "build/win/x86-Debug"
         },
         {
             "name": "win-x86-Release",
@@ -19,7 +20,8 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             },
-            "architecture": "win32"
+            "architecture": "win32",
+            "binaryDir": "build/win/x86-Release"
 
         },
         {
@@ -29,7 +31,8 @@
             "toolchainFile": "cmake/toolchains/win.cmake",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
-            }
+            },
+            "binaryDir": "build/win/x64-Debug"
         },
         {
             "name": "win-x64-Release",
@@ -38,8 +41,8 @@
             "toolchainFile": "cmake/toolchains/win.cmake",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
-            }
-
+            },
+            "binaryDir": "build/win/x64-Release"
         },
         {
             "name": "winxp-x86-Debug",
@@ -49,7 +52,8 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             },
-            "generator": "MinGW Makefiles"
+            "generator": "MinGW Makefiles",
+            "binaryDir": "build/winxp/x86-Debug"
         },
         {
             "name": "winxp-x86-Release",
@@ -59,7 +63,30 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             },
-            "generator": "MinGW Makefiles"
+            "generator": "MinGW Makefiles",
+            "binaryDir": "build/winxp/x86-Release"
+        },
+        {
+            "name": "win2k-x86-Debug",
+            "displayName": "Windows 2k x86-Debug",
+            
+            "toolchainFile": "cmake/toolchains/win2k.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "generator": "MinGW Makefiles",
+            "binaryDir": "build/win2k/x86-Debug"
+        },
+        {
+            "name": "win2k-x86-Release",
+            "displayName": "Windows 2k x86-Release",
+            
+            "toolchainFile": "cmake/toolchains/win2k.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "generator": "MinGW Makefiles",
+            "binaryDir": "build/win2k/x86-Release"
         }
     ]
 }
