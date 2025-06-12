@@ -35,11 +35,13 @@ jobs:
             generator: "MinGW Makefiles"
           - name: modern-x86-Debug
             arch: x86
+            type: Debug
             tests: true
             toolchain: "cmake/toolchains/win7_8_10_11.cmake"
             generator: "Visual Studio 17 2022"
           - name: modern-x86-Release
             arch: x86
+            type: Release
             tests: true
             toolchain: "cmake/toolchains/win7_8_10_11.cmake"
             generator: "Visual Studio 17 2022"
