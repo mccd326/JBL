@@ -45,48 +45,70 @@
             "binaryDir": "build/win/x64-Release"
         },
         {
-            "name": "winxp-x86-Debug",
-            "displayName": "Windows XP x86-Debug",
+            "name": "winxp-Debug",
+            "displayName": "Windows XP Debug",
             
             "toolchainFile": "cmake/toolchains/winxp.cmake",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             },
             "generator": "MinGW Makefiles",
-            "binaryDir": "build/winxp/x86-Debug"
+            "binaryDir": "build/winxp/Debug"
         },
         {
-            "name": "winxp-x86-Release",
-            "displayName": "Windows XP x86-Release",
+            "name": "winxp-Release",
+            "displayName": "Windows XP Release",
             
             "toolchainFile": "cmake/toolchains/winxp.cmake",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             },
             "generator": "MinGW Makefiles",
-            "binaryDir": "build/winxp/x86-Release"
+            "binaryDir": "build/winxp/Release"
         },
         {
-            "name": "win2k-x86-Debug",
-            "displayName": "Windows 2k x86-Debug",
+            "name": "win2k-Debug",
+            "displayName": "Windows 2k Debug",
             
             "toolchainFile": "cmake/toolchains/win2k.cmake",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             },
             "generator": "MinGW Makefiles",
-            "binaryDir": "build/win2k/x86-Debug"
+            "binaryDir": "build/win2k/Debug"
         },
         {
-            "name": "win2k-x86-Release",
-            "displayName": "Windows 2k x86-Release",
+            "name": "win2k-Release",
+            "displayName": "Windows 2k Release",
             
             "toolchainFile": "cmake/toolchains/win2k.cmake",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             },
             "generator": "MinGW Makefiles",
-            "binaryDir": "build/win2k/x86-Release"
+            "binaryDir": "build/win2k/Release"
+        },
+                {
+            "name": "win9x-Debug",
+            "displayName": "Windows 9x Debug",
+            
+            "toolchainFile": "cmake/toolchains/win9x.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "generator": "MinGW Makefiles",
+            "binaryDir": "build/win9x/Debug"
+        },
+        {
+            "name": "win9x-Release",
+            "displayName": "Windows 9x Release",
+            
+            "toolchainFile": "cmake/toolchains/win9x.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "generator": "MinGW Makefiles",
+            "binaryDir": "build/win9x/Release"
         }
     ]
 }
