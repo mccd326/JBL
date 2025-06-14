@@ -7,7 +7,6 @@ project(JBLTest DESCRIPTION "Jamasato Base Library Tests")
 # Add source files
 set(SOURCES src/main.cpp)
 
-
 include(GoogleTest)
 add_subdirectory(googletest)
 
@@ -16,5 +15,5 @@ set(DLLJBL_BINARY_DIR ${CMAKE_BINARY_DIR}/dlljbl_build)
 
 add_executable(JBLtest ${SOURCES})
 
-target_link_libraries(JBLtest JBLDLL gtest)
+target_link_libraries(JBLtest LIBJBL gtest)
 
