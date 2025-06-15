@@ -1,9 +1,8 @@
 #include <iostream>
-#include "lib.h"
+#include <lib.h>
 
 int main(){
     std::cout << "Hello World!" << std::endl;
-    char MyBuffer[20];
     size_t someSize = 0;
     std::string architecture;
     if(sizeof(size_t) == 4){
