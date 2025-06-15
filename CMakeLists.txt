@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.5...4.0)
-project(JBL DESCRIPTION "Jamasato Base Library")
+project(JBL
+    DESCRIPTION "Jamasato Base Library"
+    VERSION 0.0.1
+)
 
 # Add source files
 add_subdirectory(dlljbl)
