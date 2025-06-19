@@ -1,7 +1,17 @@
 {
     "version": 3,
     "configurePresets": [
-                {
+        {
+            "name": "linux-x64-Debug",
+            "displayName": "Linux x64-Debug",
+            
+            "toolchainFile": "cmake/toolchains/linux.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "binaryDir": "build/linux/x64-Debug"
+        },
+        {
             "name": "win-x86-Debug",
             "displayName": "Windows x86-Debug",
             
