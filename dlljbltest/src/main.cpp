@@ -3,7 +3,7 @@
 #include "lib.h"
 
 int main(int argc, char** args){
-    Startup();
+    GetSystemInformation();
 
     testing::InitGoogleTest();
     return RUN_ALL_TESTS();

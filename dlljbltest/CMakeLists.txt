@@ -8,7 +8,11 @@ project(JBLTest DESCRIPTION "Jamasato Base Library Tests")
 set(SOURCES src/main.cpp)
 
 include(GoogleTest)
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+find_package(GTest)
+else()
 add_subdirectory(googletest)
+endif()
 
 include_directories(${CMAKE_SOURCE_DIR}/dlljbl/src)
 set(DLLJBL_BINARY_DIR ${CMAKE_BINARY_DIR}/dlljbl_build)
