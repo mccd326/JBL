@@ -6,13 +6,12 @@ project(JBL
 
 # Add source files
 add_subdirectory(dlljbl)
-if(CMAKE_SYSTEM_VERSION GREATER 5.1)
+if(CMAKE_SYSTEM_VERSION GREATER 5.1 OR CMAKE_SYSTEM_NAME STREQUAL "Linux")
     message("Configuring test project on modern platforms")
     add_subdirectory(dlljbltest)
-else()
-    message("Configuring legacy test project")
-    add_subdirectory(legacyTest)
 endif()
+message("Configuring legacy test project")
+add_subdirectory(legacyTest)
 
 # Define installation rules
 #install(TARGETS MyLibrary DESTINATION lib)
