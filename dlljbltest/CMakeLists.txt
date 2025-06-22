@@ -5,13 +5,21 @@ project(JBLTest DESCRIPTION "Jamasato Base Library Tests")
 #set(CMAKE_CXX_STANDARD 98)
 
 # Add source files
-set(SOURCES src/main.cpp)
+set(SOURCES
+    "src/main.cpp"
+    "src/string/jblstring.test.cpp")
 
 include(GoogleTest)
-if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+#if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+#else()
 find_package(GTest)
-else()
-add_subdirectory(googletest)
+if(NOT GTest_FOUND)
+    message(STATUS "GTest not found, adding subdirectory for googletest")
+    set(BUILD_GMOCK OFF CACHE BOOL "Build gmock" FORCE)
+    set(INSTALL_GTEST OFF CACHE BOOL "Install gtest" FORCE)
+    set(BUILD_GTEST OFF CACHE BOOL "Build gtest" FORCE)
+    set(GTEST_BUILD_TESTS OFF CACHE BOOL "Build gtest tests" FORCE)
+    add_subdirectory(googletest)
 endif()
 
 include_directories(${CMAKE_SOURCE_DIR}/dlljbl/src)
@@ -21,3 +29,4 @@ add_executable(JBLtest ${SOURCES})
 
 target_link_libraries(JBLtest LIBJBL gtest)
 
+add_test(NAME JBLtest COMMAND JBLtest)
