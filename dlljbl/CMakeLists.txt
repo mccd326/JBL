@@ -2,7 +2,10 @@ cmake_minimum_required(VERSION 3.5...4.0)
 project(JBLDLL DESCRIPTION "Jamasato Base Library")
 
 # Add source files
-set(SOURCES src/lib.cpp src/lib.h)
+set(SOURCES
+    "src/lib.cpp"
+    "src/lib.h"
+    "src/string/jblstring.cpp")
 
 set(BUILD_SHARED_LIBS ON)
 
