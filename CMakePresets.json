@@ -97,28 +97,6 @@
             },
             "generator": "MinGW Makefiles",
             "binaryDir": "build/win2k/Release"
-        },
-                {
-            "name": "win9x-Debug",
-            "displayName": "Windows 9x Debug",
-            
-            "toolchainFile": "cmake/toolchains/win9x.cmake",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            },
-            "generator": "MinGW Makefiles",
-            "binaryDir": "build/win9x/Debug"
-        },
-        {
-            "name": "win9x-Release",
-            "displayName": "Windows 9x Release",
-            
-            "toolchainFile": "cmake/toolchains/win9x.cmake",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            },
-            "generator": "MinGW Makefiles",
-            "binaryDir": "build/win9x/Release"
         }
     ]
 }
