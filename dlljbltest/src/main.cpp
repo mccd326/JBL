@@ -1,6 +1,6 @@
 #include <iostream>
 #include "gtest/gtest.h"
-#include "lib.h"
+#include "jbl.h"
 
 int main(int argc, char** args){
     GetSystemInformation();
