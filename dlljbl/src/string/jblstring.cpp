@@ -1,7 +1,9 @@
 #include <iostream>
+#include <cstdlib>
 #include <cstring>
 #include <string>
 
+#include "../jbl.h"
 #include "jblstring.h"
 
 namespace JBL{

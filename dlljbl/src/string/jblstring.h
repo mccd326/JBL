@@ -1,5 +1,9 @@
+#include "../jbl.h"
+
 #ifndef JBL_STRING_H
 #define JBL_STRING_H
+
+
 
 namespace JBL
 {

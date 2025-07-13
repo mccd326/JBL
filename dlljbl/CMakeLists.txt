@@ -3,8 +3,7 @@ project(JBLDLL DESCRIPTION "Jamasato Base Library")
 
 # Add source files
 set(SOURCES
-    "src/lib.cpp"
-    "src/lib.h"
+    "src/jbl.cpp"
     "src/string/jblstring.cpp")
 
 set(BUILD_SHARED_LIBS ON)
