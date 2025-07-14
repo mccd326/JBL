@@ -5,7 +5,7 @@ void Startup(){
     std::cout << "Hello World from the library running in " << (sizeof(size_t) == 4 ? "32 bit" : "64 bit") << std::endl;
 }
 
-void GetSystemInformation(){
+JBL_EXPORT void GetSystemInformation(){
     std::cout << "OS: ";
 #if defined(JBL_WINDOWS)
     std::cout << "Windows" << std::endl;
