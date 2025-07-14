@@ -27,6 +27,6 @@ set(DLLJBL_BINARY_DIR ${CMAKE_BINARY_DIR}/dlljbl_build)
 
 add_executable(JBLtest ${SOURCES})
 
-target_link_libraries(JBLtest LIBJBL gtest)
+target_link_libraries(JBLtest DLLJBL gtest)
 
 add_test(NAME JBLtest COMMAND JBLtest)

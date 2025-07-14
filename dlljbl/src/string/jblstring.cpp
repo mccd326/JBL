@@ -13,7 +13,7 @@ namespace JBL{
         return (c == ' ' || c == '\t' || c == '\n' || c == '\r');
     }
 
-    size_t StringLength(const char* text)
+    JBL_EXPORT size_t JBL_API StringLength(const char* text)
     {
         if (text == nullptr)
         {
@@ -28,7 +28,7 @@ namespace JBL{
         return length;
     }
 
-    char* Trim(const char* text, size_t& length)
+    JBL_EXPORT char* JBL_API Trim(const char* text, size_t& length)
     {
         if(text == nullptr){
             length = 0;
