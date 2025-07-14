@@ -24,12 +24,6 @@ add_compile_definitions(
 add_library(DLLJBL SHARED ${SOURCES})
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
 
-add_custom_command(TARGET DLLJBL
-    PRE_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_CURRENT_SOURCE_DIR}/src/version.h"
-        "${CMAKE_CURRENT_BINARY_DIR}/version.h"
-)
 
 target_include_directories(DLLJBL PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 
