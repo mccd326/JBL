@@ -1,7 +1,14 @@
 cmake_minimum_required(VERSION 3.5...4.0)
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+set(JBL_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dlljbl/src")
+
+include(JBLVersion)
+
 project(JBL
     DESCRIPTION "Jamasato Base Library"
-    VERSION 0.0.1
+    VERSION "${JBL_VERSION_FULL}"
 )
 
 # Add source files
