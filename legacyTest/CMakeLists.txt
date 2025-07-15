@@ -2,7 +2,7 @@ set(CMAKE_MINIMUM_REQUIRED_VERSION 3.5...4.0)
 
 project(JBL_LEGACY_TEST
         DESCRIPTION "Test project for older platforms"
-        VERSION "0.0.1")
+        VERSION "${JBL_VERSION_FULL}")
 
 set(SOURCES src/main.cpp)
 

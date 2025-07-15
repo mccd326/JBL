@@ -1,6 +1,8 @@
 #ifndef JBL_LIB_H
 #define JBL_LIB_H
 
+#include "version.h"
+
 #if defined(__linux__)
 #   define JBL_LINUX
 #elif defined(_WIN32_WINNT) || defined(_WIN64) || defined(_WIN32)
