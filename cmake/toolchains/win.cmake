@@ -6,7 +6,8 @@ set(CMAKE_CXX_COMPILER clang-cl)
 set(CMAKE_RC_COMPILER rc)
 set(CMAKE_LINKER lld-link)
 
-
+add_compile_definitions(_WIN32_WINNT=0x0601) # Windows 7
+add_compile_definitions(WIN32_LEAN_AND_MEAN)
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 20)

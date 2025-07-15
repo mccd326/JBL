@@ -27,9 +27,11 @@ set(CMAKE_SHARED_LIBRARY_PREFIX "")
 
 target_include_directories(DLLJBL PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 
-set_target_properties(DLLJBL PROPERTIES
-    LINK_FLAGS "-static-libgcc -static-libstdc++"
-)
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    set_target_properties(DLLJBL PROPERTIES
+        LINK_FLAGS "-static-libgcc -static-libstdc++"
+    )
+endif()
 
 
 add_library(LIBJBL STATIC ${SOURCES})

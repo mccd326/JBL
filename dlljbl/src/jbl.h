@@ -3,7 +3,7 @@
 
 #if defined(__linux__)
 #   define JBL_LINUX
-#elif defined(_WIN32_WINNT)
+#elif defined(_WIN32_WINNT) || defined(_WIN64) || defined(_WIN32)
 #   define JBL_WINDOWS
 #endif
 
