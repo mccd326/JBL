@@ -1,4 +1,4 @@
-name: CMake build Windows CMake MinGW
+name: CMake build Windows MSVC
 
 on:
   workflow_dispatch:
@@ -14,32 +14,41 @@ jobs:
     strategy:
       matrix:
         config:
-          - name: win2k-x86-Debug
+          - name: winx86-Debug
             arch: x86
             type: Debug
-            toolchain: "cmake/toolchains/win2k.cmake"
-            generator: "MinGW Makefiles"
+            tests: true
+            toolchain: "cmake/toolchains/win.cmake"
+            generator: "Visual Studio 17 2022"
 
-          - name: win2k-x86-Release
+          - name: winx86-Release
             arch: x86
             type: Release
-            toolchain: "cmake/toolchains/win2k.cmake"
-            generator: "MinGW Makefiles"
+            tests: true
+            toolchain: "cmake/toolchains/win.cmake"
+            generator: "Visual Studio 17 2022"
 
-          - name: winxp-x86-Debug
-            arch: x86
+          - name: winx64-Debug
+            arch: x64
             type: Debug
-            toolchain: "cmake/toolchains/winxp.cmake"
-            generator: "MinGW Makefiles"
+            tests: true
+            toolchain: "cmake/toolchains/win.cmake"
+            generator: "Visual Studio 17 2022"
 
-          - name: winxp-x86-Release
-            arch: x86
+          - name: winx64-Release
+            arch: x64
             type: Release
-            toolchain: "cmake/toolchains/winxp.cmake"
-            generator: "MinGW Makefiles"
+            tests: true
+            toolchain: "cmake/toolchains/win.cmake"
+            generator: "Visual Studio 17 2022"
+
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: pull googleTest
+      if: matrix.config.tests
+      run: git clone https://github.com/google/googletest.git ${{github.workspace}}/dlljbltest/googletest
 
     - name: Configure CMake
       run: cmake -S . -B build-${{matrix.config.name}} -DCMAKE_TOOLCHAIN_FILE="${{github.workspace}}/${{matrix.config.toolchain}}" -DCMAKE_BUILD_TYPE=${{matrix.config.type}} -G "${{matrix.config.generator}}"
@@ -47,15 +56,15 @@ jobs:
     - name: Build Project
       run: cmake --build build-${{matrix.config.name}} --config ${{matrix.config.type}}
 
-    - name: Upload legacy test project
+    - name: Upload Test Project
+      if: matrix.config.tests
       uses: actions/upload-artifact@v4.6.2
       with:
-        name: legacyTest_${{matrix.config.name}}
+        name: dlljbltest_${{matrix.config.name}}
         path: |
-          build-${{matrix.config.name}}/legacyTest/${{matrix.config.type}}/*
-          build-${{matrix.config.name}}/legacyTest/${{matrix.config.type}}/*
+          build-${{matrix.config.name}}/dlljbltest/${{matrix.config.type}}/*
+          build-${{matrix.config.name}}/dlljbltest/${{matrix.config.type}}/*
         if-no-files-found: error
-
 
     - name: Upload library Files ${{matrix.config.name}}
       uses: actions/upload-artifact@v4.6.2
@@ -71,8 +80,16 @@ jobs:
           build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*.pdb
         if-no-files-found: error
 
+    - name: Upload legacy test project
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        name: legacyTest_${{matrix.config.name}}
+        path: |
+          build-${{matrix.config.name}}/legacyTest/${{matrix.config.type}}/*
+          build-${{matrix.config.name}}/legacyTest/${{matrix.config.type}}/*
+        if-no-files-found: error
+
     - name: cleanup
-      run: Get-ChildItem -Recurse;
-        Remove-Item -Recurse -Force *;
+      run: Remove-Item -Recurse -Force *;
       working-directory: ${{github.workspace}}
       continue-on-error: true
