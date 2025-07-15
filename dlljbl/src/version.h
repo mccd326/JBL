@@ -5,6 +5,7 @@
  2025-07-15     0.0.1.1     Fix for modern Windows toolchain, which didn't define _WIN32_WINNT.
                             Split Windows pipeline into two separate workflows, one for MSVC and one for MinGW.
  2025-07-15     0.0.1.2     Fixed path to legacy test build directory in MinGW pipeline.
+ 2025-07-15     0.0.1.3     Adjusted artifact uploads for MinGW and MSVC pipelines to only include relevant files.
 */
 
 #define JBL_STRINGIFY(x) #x
@@ -13,7 +14,7 @@
 #define JBL_VERSION_MAJOR    0
 #define JBL_VERSION_MINOR    0
 #define JBL_VERSION_PATCH    1
-#define JBL_VERSION_BUILD    2
+#define JBL_VERSION_BUILD    3
 #define JBL_VERSION_STRING   JBL_STR(JBL_VERSION_MAJOR) "." \
                             JBL_STR(JBL_VERSION_MINOR) "." \
                             JBL_STR(JBL_VERSION_PATCH) "." \

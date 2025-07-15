@@ -52,8 +52,10 @@ jobs:
       with:
         name: legacyTest_${{matrix.config.name}}
         path: |
-          build-${{matrix.config.name}}/legacyTest/*
-          build-${{matrix.config.name}}/legacyTest/*
+          build-${{matrix.config.name}}/legacyTest/*.a
+          build-${{matrix.config.name}}/legacyTest/*.lib
+          build-${{matrix.config.name}}/legacyTest/*.dll
+          build-${{matrix.config.name}}/legacyTest/*.exe
         if-no-files-found: error
 
 
@@ -64,11 +66,8 @@ jobs:
         path: |
           build-${{matrix.config.name}}/dlljbl/*.a
           build-${{matrix.config.name}}/dlljbl/*.lib
-          build-${{matrix.config.name}}/dlljbl/*.pdb
+          build-${{matrix.config.name}}/dlljbl/*.dll
           build-${{matrix.config.name}}/dlljbl/*.exe
-          build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*.exe
-          build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*.lib
-          build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*.pdb
         if-no-files-found: error
 
     - name: cleanup

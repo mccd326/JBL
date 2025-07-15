@@ -62,8 +62,10 @@ jobs:
       with:
         name: dlljbltest_${{matrix.config.name}}
         path: |
-          build-${{matrix.config.name}}/dlljbltest/${{matrix.config.type}}/*
-          build-${{matrix.config.name}}/dlljbltest/${{matrix.config.type}}/*
+            build-${{matrix.config.name}}/dlljbltest/${{matrix.config.type}}/*.lib
+            build-${{matrix.config.name}}/dlljbltest/${{matrix.config.type}}/*.dll
+            build-${{matrix.config.name}}/dlljbltest/${{matrix.config.type}}/*.exe
+            build-${{matrix.config.name}}/dlljbltest/${{matrix.config.type}}/*.pdb
         if-no-files-found: error
 
     - name: Upload library Files ${{matrix.config.name}}
@@ -71,13 +73,10 @@ jobs:
       with:
         name: dlljbl_${{matrix.config.name}}
         path: |
-          build-${{matrix.config.name}}/dlljbl/*.a
-          build-${{matrix.config.name}}/dlljbl/*.lib
-          build-${{matrix.config.name}}/dlljbl/*.pdb
-          build-${{matrix.config.name}}/dlljbl/*.exe
-          build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*.exe
-          build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*.lib
-          build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*.pdb
+            build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*.dll
+            build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*.lib
+            build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*.exe
+            build-${{matrix.config.name}}/dlljbl/${{matrix.config.type}}/*.pdb
         if-no-files-found: error
 
     - name: Upload legacy test project
@@ -85,8 +84,10 @@ jobs:
       with:
         name: legacyTest_${{matrix.config.name}}
         path: |
-          build-${{matrix.config.name}}/legacyTest/${{matrix.config.type}}/*
-          build-${{matrix.config.name}}/legacyTest/${{matrix.config.type}}/*
+            build-${{matrix.config.name}}/legacyTest/${{matrix.config.type}}/*.dll
+            build-${{matrix.config.name}}/legacyTest/${{matrix.config.type}}/*.lib
+            build-${{matrix.config.name}}/legacyTest/${{matrix.config.type}}/*.exe
+            build-${{matrix.config.name}}/legacyTest/${{matrix.config.type}}/*.pdb
         if-no-files-found: error
 
     - name: cleanup
