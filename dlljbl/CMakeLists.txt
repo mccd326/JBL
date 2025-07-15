@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.5...4.0)
 
 project(JBLDLL
     DESCRIPTION "Jamasato Base Library"
-    VERSION "${JBL_VERSION_MAJOR}.${JBL_VERSION_MINOR}.${JBL_VERSION_PATCH}.${JBL_VERSION_BUILD}")
+    VERSION "${JBL_VERSION_FULL}")
 
 # Set version.rc to current version information
 configure_file(src/version.rc.in ${CMAKE_CURRENT_BINARY_DIR}/version.rc @ONLY)

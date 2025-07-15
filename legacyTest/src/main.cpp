@@ -2,7 +2,7 @@
 #include <jbl.h>
 
 int main(){
-    std::cout << "Hello World!" << std::endl;
+    std::cout << "Starting legacy tests for JBL library version: " << JBL_VERSION_STRING << std::endl;
     size_t someSize = {0};
     std::string architecture;
     if(sizeof(size_t) == 4){
