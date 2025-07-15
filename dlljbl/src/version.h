@@ -10,6 +10,7 @@
  2025-07-15     0.0.1.2         Fixed path to legacy test build directory in MinGW pipeline.
  2025-07-15     0.0.1.3         Adjusted artifact uploads for MinGW and MSVC pipelines to only include relevant files.
  2025-07-15     0.0.1.alpha.2   Changed to semantic versioning format.
+ 2025-07-16     0.0.1.alpha.3   Fixed version.rc.in for old Windows toolchains, which need 4 version numbers.
 */
 
 #define JBL_STRINGIFY(x) #x
@@ -18,7 +19,7 @@
 #define JBL_VERSION_MAJOR    0
 #define JBL_VERSION_MINOR    0
 #define JBL_VERSION_PATCH    1
-#define JBL_VERSION_PREVIEW  alpha.2
+#define JBL_VERSION_PREVIEW  alpha.3
 #define JBL_VERSION_STRING   JBL_STR(JBL_VERSION_MAJOR) "." \
                             JBL_STR(JBL_VERSION_MINOR) "." \
                             JBL_STR(JBL_VERSION_PATCH) "-" \
