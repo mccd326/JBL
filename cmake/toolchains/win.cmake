@@ -1,10 +1,7 @@
 set(CMAKE_SYSTEM_NAME Windows)
 set(CMAKE_SYSTEM_VERSION 6.1)
 
-set(CMAKE_C_COMPILER clang-cl)
-set(CMAKE_CXX_COMPILER clang-cl)
-set(CMAKE_RC_COMPILER rc)
-set(CMAKE_LINKER lld-link)
+set(CMAKE_GENERATOR "Visual Studio 17 2022")
 
 add_compile_definitions(_WIN32_WINNT=0x0601) # Windows 7
 add_compile_definitions(WIN32_LEAN_AND_MEAN)
